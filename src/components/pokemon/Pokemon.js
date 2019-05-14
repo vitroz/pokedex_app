@@ -66,8 +66,6 @@ export default class Pokemon extends Component {
 		 this.setState({name, imageUrl, types, evolution: evolutionName, evolution_chain: pkmn_name_chain});
 		});
 
-		console.log(arrr);
-
 	}
 
 	render(){
@@ -75,7 +73,9 @@ export default class Pokemon extends Component {
 		return(
 			<div>
 				<h1>{this.state.name}</h1>
-				<h4>Types</h4>
+			<Sprite className="card-img-top rounded mx-auto mt-2"
+			  	 src={this.state.imageUrl}/>				
+				<h4>Type(s)</h4>
 			    <div>
                   {this.state.types.map(type => (
                     <span
@@ -90,9 +90,7 @@ export default class Pokemon extends Component {
                     </span>
                   ))}
                 </div>
-            <h3>Evolution: {this.state.evolution}</h3> 
-			<Sprite className="card-img-top rounded mx-auto mt-2"
-			  	 src={this.state.imageUrl}/>
+            <h4>Evolution: {this.state.evolution}</h4> 
 				<h4>Evolution Family</h4>
 			    <div>
                   {this.state.evolution_chain.map(name => (

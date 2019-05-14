@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+
 
 const Sprite = styled.img`
 	width: 5em;
@@ -22,27 +24,29 @@ const Card = styled.div`
 `;
 
 
-
-export default class PokeonCard extends Component {
+export default class PokemonCard extends Component {
 	state =  {
 		name: '',
 		imageUrl: '',
+		id: '',
 		pokemonIndex: '',
 	};
 
 	componentDidMount(){
 		const { name, url, id } = this.props;
 		const imageUrl = "https://img.pokemondb.net/sprites/omega-ruby-alpha-sapphire/dex/normal/"+name+".png"
-		this.setState({ name, imageUrl, pokemonIndex: id })
+		this.setState({ name, imageUrl, id, pokemonIndex: id })
 	}
-
 
 	render(){
 		return(
 			<div className="col-md-3 col-sm-6 mb-5">
+			<div className="card-header">
+				<span className="">{this.state.id}</span>
+			</div>
+
         	<Link to={`pokemon/${this.state.pokemonIndex}`}>
 			  <div className="card">
-			  	<h5 className="card-header">{this.state.id}</h5>
 			  	<Sprite className="card-img-top rounded mx-auto mt-2"
 			  	 src={this.state.imageUrl}
 			  	/>
